@@ -1,17 +1,20 @@
 package nigeriageo
 
 import (
+	"sort"
+
 	"github.com/delsahim/nigeria_geo/internal/data"
 	"github.com/delsahim/nigeria_geo/internal/models"
 	"github.com/delsahim/nigeria_geo/internal/validators"
 )
 
 
-func GetAllStates() []models.State {
-    states := make([]models.State, 0, len(data.States))
+func GetAllStates() []string {
+    states := make([]string, 0, len(data.States))
     for _, state := range data.States {
-        states = append(states, state)
+        states = append(states, state.Name)
     }
+    sort.Strings(states)
     return states
 }
 
